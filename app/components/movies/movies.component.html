@@ -1,0 +1,82 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Find My Movie</h1>
+    <p>
+      Search for a movie :
+    </p>
+    <form (submit)="searchMovies()">
+      <input type="text" class="form-control" [(ngModel)]="searchStr" name="searchStr">
+      <br />
+      <button class="btn btn-primary btn-lg">Find</button>
+    </form>
+  </div>
+</div>
+
+
+<div *ngIf="searchRes" class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="font-family: 'Kaushan Script', cursive; font-size:30px;">Search Results</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div *ngFor="let movie of searchRes;let i=index" class="col-md-2">
+          <div *ngIf="i < 18">
+                <img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" />
+                <h4>{{movie.title}}</h4>
+                <p>
+                  {{movie.release_date}}
+                </p>
+                <p>
+                  <a class="btn btn-default" routerLink="/movie/{{movie.id}}">View Details</a>
+                </p>
+              </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="font-family: 'Kaushan Script', cursive; font-size:30px;">Popular Movies</h3>
+    </div>
+    <div class="panel-body">
+        <div *ngFor="let movie of popularList;let i=index" class="col-md-2">
+          <div *ngIf="i < 6">
+                <img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" />
+                <h4>{{movie.title}}</h4>
+                <p>
+                  {{movie.release_date}}
+                </p>
+                <p>
+                  <a class="btn btn-default" routerLink="/movie/{{movie.id}}">View Details</a>
+                </p>
+              </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"style="font-family: 'Kaushan Script', cursive; font-size:33px;">In Theatres</h3>
+    </div>
+    <div class="panel-body">
+        <div *ngFor="let movie of theatresList;let i=index" class="col-md-2">
+          <div *ngIf="i < 6">
+                <img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" />
+                <h4>{{movie.title}}</h4>
+                <p>
+                  {{movie.release_date}}
+                </p>
+                <p>
+                  <a class="btn btn-default" routerLink="/movie/{{movie.id}}">View Details</a>
+                </p>
+              </div>
+        </div>
+    </div>
+</div>
